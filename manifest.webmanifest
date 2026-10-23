@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "Bunny's Reading Garden",
+  "short_name": "Reading Garden",
+  "description": "A gentle phonics garden for early readers and their grown-ups.",
+  "lang": "en-AU",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fff8ed",
+  "theme_color": "#397e69",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

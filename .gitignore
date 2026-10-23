@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+node_modules/
+test-results/
+research/ledger.json
+*.wav
+*.webm
+*.mp4
+*.log

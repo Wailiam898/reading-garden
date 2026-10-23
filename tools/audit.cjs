@@ -1,0 +1,6 @@
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const root=path.join(__dirname,'..'),C=require('../src/core.js');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8'),core=html.match(/<script>([\s\S]*?)<\/script>/)[1];let box={module:{exports:{}},Math,Date};vm.runInNewContext(core,box);if(JSON.stringify(box.module.exports.DATA)!==JSON.stringify(C.DATA))throw new Error('Built HTML curriculum differs from source');
+let r=C.audit();r.scope='All printed decoding/spelling words, sentence and book tokens, book titles, explicit heart-word exceptions, and picture presence; excludes spoken-only vocabulary, adult copy and menus.';r.sets=C.DATA.sets.map((s,i)=>({set:i+1,sounds:s.sounds,words:C.DATA.words.filter(w=>w.set===i).map(w=>w.text),heartWords:C.DATA.hearts.filter(h=>h.set===i).map(h=>h.text)}));
+fs.mkdirSync(path.join(root,'test-results'),{recursive:true});fs.writeFileSync(path.join(root,'test-results/curriculum-audit.json'),JSON.stringify(r,null,2));fs.writeFileSync(path.join(root,'test-results/word-list.csv'),'set,word,graphemes,picture,phoneme_boxes\n'+C.DATA.words.map(w=>[w.set+1,w.text,w.parts.join(' '),w.pic,C.soundSlots(w).length].join(',')).join('\n'));
+console.log(JSON.stringify({...r,sets:undefined},null,2));if(r.errors.length)process.exitCode=1;
