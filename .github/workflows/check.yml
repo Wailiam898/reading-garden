@@ -16,6 +16,6 @@ jobs:
         with:
           python-version: '3.11'
       - run: python tools/build.py
-      - run: git diff --exit-code index.html
+      - run: git diff --exit-code index.html sw.js
       - run: node --test tests/core.test.cjs tests/audio.test.cjs tests/offline.test.cjs
       - run: node tools/audit.cjs
