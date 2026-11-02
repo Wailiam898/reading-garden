@@ -1,6 +1,6 @@
 /* Hosted companion only: the game itself is self-contained in index.html. */
 'use strict';
-const CACHE = 'reading-garden-shell-e838b2e04207';
+const CACHE = 'reading-garden-shell-886e69de795b';
 const ROOT = self.registration.scope;
 const SHELL = ['index.html', './', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'].map(p => new URL(p, ROOT).href);
 self.addEventListener('install', event => {
